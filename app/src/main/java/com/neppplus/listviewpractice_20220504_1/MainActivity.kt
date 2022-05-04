@@ -2,6 +2,7 @@ package com.neppplus.listviewpractice_20220504_1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.neppplus.listviewpractice_20220504_1.adapters.StudentAdapter
 import com.neppplus.listviewpractice_20220504_1.models.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,5 +30,15 @@ class MainActivity : AppCompatActivity() {
 
         mStudentAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
         mainListView.adapter = mStudentAdapter
+        
+        mainListView.setOnItemClickListener { adapterView, view, i, l ->
+            Toast.makeText(this, "$i", Toast.LENGTH_SHORT).show()
+        }
+
+        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
+            Toast.makeText(this, "$i 길게 눌렀습니다.", Toast.LENGTH_SHORT).show()
+            return@setOnItemLongClickListener(true)
+        }
+
     }
 }
