@@ -1,5 +1,6 @@
 package com.neppplus.listviewpractice_20220504_1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -32,13 +33,15 @@ class MainActivity : AppCompatActivity() {
         mainListView.adapter = mStudentAdapter
         
         mainListView.setOnItemClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, "$i", Toast.LENGTH_SHORT).show()
+            val myIntent = Intent(this, DetailProfileActivity::class.java)
+            myIntent.putExtra("name", mStudentList[i].name)
+                .putExtra("birthYear", mStudentList[i].birthYear)
+                .putExtra("address", mStudentList[i].address)
+            startActivity(myIntent)
         }
-
-        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
-            Toast.makeText(this, "$i 길게 눌렀습니다.", Toast.LENGTH_SHORT).show()
-            return@setOnItemLongClickListener(true)
-        }
-
+//        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
+//            Toast.makeText(this, "$i 길게 눌렀습니다.", Toast.LENGTH_SHORT).show()
+//            return@setOnItemLongClickListener(true)
+//        }
     }
 }
