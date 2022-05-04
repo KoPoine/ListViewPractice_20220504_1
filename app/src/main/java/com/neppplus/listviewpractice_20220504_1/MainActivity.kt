@@ -3,40 +3,40 @@ package com.neppplus.listviewpractice_20220504_1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import com.neppplus.listviewpractice_20220504_1.adapters.StudentAdapter
+import com.neppplus.listviewpractice_20220504_1.adapters.StoreAdapter
 import com.neppplus.listviewpractice_20220504_1.models.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    val mStudentList = ArrayList<StudentData>()
-    lateinit var mStudentAdapter : StudentAdapter
+    val mStoreList = ArrayList<StudentData>()
+    lateinit var mStoreAdapter : StoreAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 //        학생 데이터 입력
-        mStudentList.add( StudentData("김민철", 1990, "서울시 서대문구") )
-        mStudentList.add( StudentData("권용훈", 1986, "경기도 성남시") )
-        mStudentList.add( StudentData("김노아", 2000, "서울시 강남구") )
-        mStudentList.add( StudentData("김진우", 1993, "서울시 영등포구") )
-        mStudentList.add( StudentData("박동근", 1991, "서울시 성동구") )
-        mStudentList.add( StudentData("박선희", 1986, "서울시 강동구") )
-        mStudentList.add( StudentData("서수현", 1993, "서울시 중랑구") )
-        mStudentList.add( StudentData("송미진", 1994, "경기도 성남시") )
-        mStudentList.add( StudentData("심재혁", 1995, "서울시 동대문구") )
-        mStudentList.add( StudentData("정한별", 1997, "서울시 강동구") )
-        mStudentList.add( StudentData("조장환", 1987, "경기도 남양주시") )
-        mStudentList.add( StudentData("최혜인", 1997, "경기도 성남시") )
+        mStoreList.add( StudentData("김밥천국", 19900, "김밥") )
+        mStoreList.add( StudentData("김밥천국", 19860, "김밥 성남시") )
+        mStoreList.add( StudentData("김밥천국", 20000, "김밥 강남구") )
+        mStoreList.add( StudentData("김밥천국", 19930, "김밥 영등포구") )
+        mStoreList.add( StudentData("김밥천국", 19910, "김밥 성동구") )
+        mStoreList.add( StudentData("김밥천국", 19860, "김밥 강동구") )
+        mStoreList.add( StudentData("김밥천국", 19930, "김밥 중랑구") )
+        mStoreList.add( StudentData("김밥천국", 19940, "김밥 성남시") )
+        mStoreList.add( StudentData("김밥천국", 19950, "김밥 동대문구") )
+        mStoreList.add( StudentData("김밥천국", 19970, "김밥 강동구") )
+        mStoreList.add( StudentData("김밥천국", 19870, "김밥 남양주시") )
+        mStoreList.add( StudentData("김밥천국", 19970, "김밥 성남시") )
 
-        mStudentAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
-        mainListView.adapter = mStudentAdapter
+        mStoreAdapter = StoreAdapter(this, R.layout.student_list_item, mStoreList)
+        mainListView.adapter = mStoreAdapter
         
         mainListView.setOnItemClickListener { adapterView, view, i, l ->
             val myIntent = Intent(this, DetailProfileActivity::class.java)
-            myIntent.putExtra("name", mStudentList[i].name)
-                .putExtra("birthYear", mStudentList[i].birthYear)
-                .putExtra("address", mStudentList[i].address)
+            myIntent.putExtra("name", mStoreList[i].name)
+                .putExtra("birthYear", mStoreList[i].minCharge)
+                .putExtra("address", mStoreList[i].menu)
             startActivity(myIntent)
         }
 //        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
