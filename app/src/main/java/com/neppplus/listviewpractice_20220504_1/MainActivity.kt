@@ -1,8 +1,11 @@
 package com.neppplus.listviewpractice_20220504_1
 
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.neppplus.listviewpractice_20220504_1.adapters.StoreAdapter
 import com.neppplus.listviewpractice_20220504_1.models.StudentData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -39,9 +42,17 @@ class MainActivity : AppCompatActivity() {
                 .putExtra("address", mStoreList[i].menu)
             startActivity(myIntent)
         }
-//        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
-//            Toast.makeText(this, "$i 길게 눌렀습니다.", Toast.LENGTH_SHORT).show()
-//            return@setOnItemLongClickListener(true)
-//        }
+        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
+            val store = mStoreList[i].name
+            val alert = AlertDialog.Builder(this)
+                .setTitle("상점 삭제")
+                .setMessage("${mStoreList[i].name} 가게를 삭제하시겠습니까?")
+                .setPositiveButton("확인", DialogInterface.OnClickListener { dialogInterface, i ->
+                    Toast.makeText(this, "${store}을/를 삭제하였습니다.", Toast.LENGTH_SHORT).show()
+                })
+                .setNegativeButton("취소", null)
+                .show()
+            return@setOnItemLongClickListener(true)
+        }
     }
 }
