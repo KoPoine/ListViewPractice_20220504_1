@@ -34,9 +34,7 @@ class MainActivity : AppCompatActivity() {
         
         mainListView.setOnItemClickListener { adapterView, view, i, l ->
             val myIntent = Intent(this, DetailProfileActivity::class.java)
-            myIntent.putExtra("name", mStudentList[i].name)
-                .putExtra("birthYear", mStudentList[i].birthYear)
-                .putExtra("address", mStudentList[i].address)
+            myIntent.putExtra("studentData", mStudentList[i])
             startActivity(myIntent)
         }
 //        mainListView.setOnItemLongClickListener { adapterView, view, i, l ->
